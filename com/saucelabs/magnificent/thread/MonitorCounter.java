@@ -1,22 +1,22 @@
 package com.saucelabs.magnificent.thread;
 
 import com.saucelabs.magnificent.config.Config;
-public class MonitorGauge {
+public class MonitorCounter {
 
-	private static MonitorGauge instance;
+	private static MonitorCounter instance;
 	Boolean[] health;
 	int downs;
 	int index = 0;	
 	boolean appDown;
 	
-	public static MonitorGauge getInstance(){
+	public static MonitorCounter getInstance(){
 		if(instance == null) {
-			instance = new MonitorGauge();
+			instance = new MonitorCounter();
 		}
 		return instance;
 	}
     
-    private MonitorGauge(){
+    private MonitorCounter(){
         initOrResetHealth();
     }
     

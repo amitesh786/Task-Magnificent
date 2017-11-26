@@ -1,12 +1,13 @@
-package com.saucelabs.magnificent.http;
+package com.saucelabs.magnificent.https;
 
 import java.io.IOException;
-import org.apache.http.impl.client.HttpClientBuilder;
-import com.saucelabs.magnificent.exception.ApplicationException;
-import com.saucelabs.magnificent.exception.ExceptionMessage;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+
+import org.apache.http.impl.client.HttpClientBuilder;
+import com.saucelabs.magnificent.exceptions.ExceptionApp;
+import com.saucelabs.magnificent.exceptions.MsgException;
 
 public class HTTPConnector {
     
@@ -14,14 +15,14 @@ public class HTTPConnector {
 	private static HTTPConnector instance;	
 	private HTTPConnector() {}
 	
-	public int connect() throws ApplicationException {
+	public int connect() throws ExceptionApp {
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpGet request = new HttpGet(url);
 		HttpResponse response;		
 		try {
 			response = client.execute(request);
 		} catch (IOException e) {
-			throw new ApplicationException(ExceptionMessage.FAILED_TO_OPEN_CONNECTION);
+			throw new ExceptionApp(MsgException.FAILED_TO_OPEN_CONNECTION);
 		}
 		int code = response.getStatusLine().getStatusCode();
 		return code;		

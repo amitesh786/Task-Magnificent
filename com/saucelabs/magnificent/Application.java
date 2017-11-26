@@ -1,9 +1,9 @@
 package com.saucelabs.magnificent;
 
-import com.saucelabs.magnificent.thread.DaemonThread;
+import com.saucelabs.magnificent.thread.DaemonConnection;
 public class Application {
     
 	public static void main(String[] args) {
-		DaemonThread.getInstance().start();
+		DaemonConnection.getInstance().start();
 	}
 }
